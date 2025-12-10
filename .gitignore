@@ -21,3 +21,56 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# APK 反编译文件 - 忽略无关的第三方库和资源
+# 策略：先忽略所有，然后只保留核心业务代码
+
+# 1. 完全忽略 apktool 输出（smali 文件可读性差，文件太多）
+apk_decompiled/apktool_output/
+
+# 2. 忽略 jadx 输出中的第三方库和框架代码
+apk_decompiled/jadx_output/sources/android/
+apk_decompiled/jadx_output/sources/androidx/
+apk_decompiled/jadx_output/sources/io/
+apk_decompiled/jadx_output/sources/javax/
+apk_decompiled/jadx_output/sources/kotlin/
+apk_decompiled/jadx_output/sources/kotlinx/
+apk_decompiled/jadx_output/sources/mirrorb/
+apk_decompiled/jadx_output/sources/okhttp3/
+apk_decompiled/jadx_output/sources/okio/
+apk_decompiled/jadx_output/sources/org/
+apk_decompiled/jadx_output/sources/p027/
+apk_decompiled/jadx_output/sources/retrofit2/
+apk_decompiled/jadx_output/sources/com/google/
+apk_decompiled/jadx_output/sources/com/muhua/cloud/
+apk_decompiled/jadx_output/sources/com/muhua/wz/net/
+apk_decompiled/jadx_output/sources/com/muhua/wz/util/
+apk_decompiled/jadx_output/sources/com/muhua/wz/menu/
+apk_decompiled/jadx_output/sources/com/muhua/wz/databinding/
+
+# 3. 忽略所有图片和二进制资源
+apk_decompiled/**/*.png
+apk_decompiled/**/*.jpg
+apk_decompiled/**/*.jpeg
+apk_decompiled/**/*.gif
+apk_decompiled/**/*.webp
+apk_decompiled/**/*.ico
+apk_decompiled/**/*.so
+apk_decompiled/**/*.dex
+apk_decompiled/**/*.apk
+apk_decompiled/**/*.jar
+apk_decompiled/**/*.class
+
+# 4. 忽略 resources 中的大部分文件（只保留关键配置）
+apk_decompiled/jadx_output/resources/res/drawable*/
+apk_decompiled/jadx_output/resources/res/mipmap*/
+apk_decompiled/jadx_output/resources/res/layout*/
+apk_decompiled/jadx_output/resources/res/color*/
+apk_decompiled/jadx_output/resources/res/anim*/
+apk_decompiled/jadx_output/resources/lib/
+
+# 保留的文件：
+# - apk_decompiled/jadx_output/sources/com/muhua/wz/*.java (核心业务代码)
+# - apk_decompiled/jadx_output/resources/assets/package.json (游戏配置)
+# - apk_decompiled/jadx_output/resources/AndroidManifest.xml (清单文件)
+# - apk_decompiled/jadx_output/resources/res/values/*.xml (字符串等资源)

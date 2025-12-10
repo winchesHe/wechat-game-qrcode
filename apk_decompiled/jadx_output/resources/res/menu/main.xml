@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:icon="@drawable/ic_refresh"
+        android:id="@+id/refresh"
+        android:title="刷新"
+        android:showAsAction="always"/>
+    <item
+        android:icon="@drawable/ic_more"
+        android:id="@+id/more"
+        android:title="更多游戏"
+        android:showAsAction="always"/>
+</menu>

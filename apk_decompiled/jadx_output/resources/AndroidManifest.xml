@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    android:versionCode="7"
+    android:versionName="1.0.6"
+    android:compileSdkVersion="32"
+    android:compileSdkVersionCodename="12"
+    package="com.info.wz"
+    platformBuildVersionCode="32"
+    platformBuildVersionName="12">
+    <uses-sdk
+        android:minSdkVersion="21"
+        android:targetSdkVersion="31"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
+    <application
+        android:theme="@style/Theme.Wz"
+        android:label="info扫码登录器"
+        android:icon="@mipmap/ic_launcher"
+        android:name="com.muhua.wz.Application"
+        android:allowBackup="false"
+        android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+        android:requestLegacyExternalStorage="true">
+        <activity
+            android:name="com.muhua.wz.HomeActivity"
+            android:exported="false"/>
+        <activity
+            android:theme="@style/AppWelcome"
+            android:name="com.muhua.wz.HomeActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.muhua.wz.MainActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name="com.muhua.wz.WebViewActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"/>
+        <provider
+            android:name="com.muhua.wz.FileProvider"
+            android:exported="false"
+            android:authorities="com.muhua.wz.fileProvider"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:value=""
+                android:resource="@xml/file_paths"/>
+        </provider>
+        <provider
+            android:name="com.core.base.ContextProvider"
+            android:exported="false"
+            android:authorities="com.muhua.wz.com.core.base"/>
+        <service
+            android:name="com.azhon.appupdate.service.DownloadService"
+            android:exported="false"/>
+        <provider
+            android:name="com.azhon.appupdate.config.AppUpdateFileProvider"
+            android:exported="false"
+            android:authorities="com.muhua.wz.fileProvider"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:value=""
+                android:resource="@xml/app_update_file"/>
+        </provider>
+        <activity
+            android:theme="@style/UpdateDialog"
+            android:name="com.azhon.appupdate.view.UpdateDialogActivity"
+            android:exported="false"/>
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:exported="false"
+            android:authorities="com.muhua.wz.androidx-startup">
+            <meta-data
+                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+                android:value="androidx.startup"/>
+            <meta-data
+                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+                android:value="androidx.startup"/>
+        </provider>
+    </application>
+</manifest>
